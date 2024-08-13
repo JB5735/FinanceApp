@@ -1,29 +1,27 @@
-# Building a Tip Calculator
+# Building a Compound Interest Calculator
 
-def tip_calc(cost, tip_percent):
-    tip = float("%.2f" % (cost * (tip_percent / 100)))
-    return tip
-
-
-# Building a Tax Calculator
-
-def tax_calc(cost, tax_percent):
-    tax = float("%.2f" % ((cost * tax_percent) / 100))
-    return tax
+# Principle amount
+p = 0
+# Interest Rate
+r = 0
+# Time (years)
+t = 0
 
 
-# Total Meal Cost Calculator
+while p <= 0:
+    p = float(input("Enter the principle amount: "))
+    if p <= 0:
+        print("Principle can't be less than or equal to 0")
 
-def meal_cost(cost, tip_percent, tax_percent):
-    tip = tip_calc(cost, tip_percent)
-    tax = tax_calc(cost, tax_percent)
-    total = cost + tip + tax
-    return total
+while r <= 0:
+    r = 1 + (float(input("Enter the interest rate: ")) / 100)
+    if r <= 0:
+        print("Interest rate can't be less than or equal to 0")
 
+while t <= 0:
+    t = int(input("Enter the amount of time: "))
+    if t <= 0:
+        print("Time can't be less than or equal to 0")
 
-cost = float(input("How much was the flat cost of the meal? "))
-tip_percent = float(input("What percent would you like to tip? "))
-tax_percent = float(input("What percent is being taxed? "))
-
-total = meal_cost(cost, tip_percent, tax_percent)
-print(f"Your total cost for the meal with a {tip_percent} tip and {tax_percent} tax is ${total}")
+total = "%.2f" % (p * (r**t))
+print(f"Balance after {t} year(s): ${total}")
